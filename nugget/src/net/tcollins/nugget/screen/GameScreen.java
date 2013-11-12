@@ -3,12 +3,12 @@
  */
 package net.tcollins.nugget.screen;
 
-
 import net.tcollins.nugget.controller.NuggetController;
 import net.tcollins.nugget.model.World;
 import net.tcollins.nugget.view.WorldRenderer;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
@@ -19,9 +19,11 @@ import com.badlogic.gdx.graphics.GL10;
  */
 public class GameScreen implements Screen, InputProcessor {
 
-	private World 			world;
-	private WorldRenderer 	renderer;
-	private NuggetController	nuggetController;
+	private World world;
+	private WorldRenderer renderer;
+	private NuggetController nuggetController;
+
+	private int width, height;
 	
 	/************************************
 	 * Screen methods
@@ -46,11 +48,14 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public void resize(int width, int height) {
+		renderer.setSize(width, height);
+		this.width = width;
+		this.height = height;
 	}
 
 	@Override
 	public void hide() {
-
+		Gdx.input.setInputProcessor(null);
 	}
 
 	@Override
@@ -66,6 +71,7 @@ public class GameScreen implements Screen, InputProcessor {
 	@Override
 	public void dispose() {
 		renderer.dispose();
+		Gdx.input.setInputProcessor(null);
 	}
 
 	/************************************
@@ -74,12 +80,24 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
-		return false;
+		if (keycode == Keys.LEFT) {
+			nuggetController.leftDown();
+		}
+		if (keycode == Keys.RIGHT) {
+			nuggetController.rightDown();
+		}
+		return true;
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
-		return false;
+		if (keycode == Keys.LEFT) {
+			nuggetController.leftUp();
+		}
+		if (keycode == Keys.RIGHT) {
+			nuggetController.rightUp();
+		}
+		return true;
 	}
 
 	@Override
