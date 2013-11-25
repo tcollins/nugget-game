@@ -41,6 +41,7 @@ public class Textures {
 		// nuggetWalkRightAnimation = buildNuggetWalkAnimation(atlas, false);
 		nuggetWalkLeftAnimation = buildNuggetWalkAnimation(atlas, true);
 
+		
 		// load the map, set the unit scale to 1/16 (1 unit == 16 pixels)
 		// tiledMap = new
 		// TmxMapLoader().load("data/maps/tiled/super-koalio/level1.tmx");
