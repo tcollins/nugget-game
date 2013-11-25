@@ -97,36 +97,28 @@ public class WorldRenderer {
 	}
 
 	public void renderBackground() {
-<<<<<<< HEAD
-//		shaperRenderer.setProjectionMatrix(camera.combined);
-//		shaperRenderer.begin(ShapeType.FilledRectangle);
-//		for (int i = 0; i < 40; i++) {
-//			if (i % 2 == 0) {
-//				shaperRenderer.setColor(new Color(1, 0, 0, 1));
-//			} else {
-//				shaperRenderer.setColor(new Color(1, 0, 1, 1));
-//			}
-//			shaperRenderer.filledRect(i - 14 + 2, -3.0f, 0.98f, 2);
-//		}
-//		shaperRenderer.end();
-		
+		// shaperRenderer.setProjectionMatrix(camera.combined);
+		// shaperRenderer.begin(ShapeType.FilledRectangle);
+		// for (int i = 0; i < 40; i++) {
+		// if (i % 2 == 0) {
+		// shaperRenderer.setColor(new Color(1, 0, 0, 1));
+		// } else {
+		// shaperRenderer.setColor(new Color(1, 0, 1, 1));
+		// }
+		// shaperRenderer.filledRect(i - 14 + 2, -3.0f, 0.98f, 2);
+		// }
+		// shaperRenderer.end();
+
 		shaperRenderer.setProjectionMatrix(camera.combined);
 		shaperRenderer.begin(ShapeType.Filled);
-=======
-		shaperRenderer.setProjectionMatrix(camera.combined);
-		shaperRenderer.begin(ShapeType.FilledRectangle);
->>>>>>> origin/master
+
 		for (int i = 0; i < 40; i++) {
 			if (i % 2 == 0) {
 				shaperRenderer.setColor(new Color(1, 0, 0, 1));
 			} else {
 				shaperRenderer.setColor(new Color(1, 0, 1, 1));
 			}
-<<<<<<< HEAD
 			shaperRenderer.rect(i - 14 + 2, -3.0f, 0.98f, 2);
-=======
-			shaperRenderer.filledRect(i - 14 + 2, -3.0f, 0.98f, 2);
->>>>>>> origin/master
 		}
 		shaperRenderer.end();
 	}
