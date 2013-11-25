@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector3;
 
 /**
@@ -32,6 +33,7 @@ public class WorldRenderer {
 	private OrthographicCamera camera;
 	private SpriteBatch spriteBatch;
 
+	private OrthogonalTiledMapRenderer tiledMapRenderer;
 	ShapeRenderer shaperRenderer = new ShapeRenderer();
 
 	private Textures textures;
@@ -55,7 +57,8 @@ public class WorldRenderer {
 		spriteBatch = new SpriteBatch();
 
 		textures = new Textures();
-
+		
+		tiledMapRenderer = new OrthogonalTiledMapRenderer(textures.getTiledMap(), 1 / 64f);
 	}
 
 	public void setSize(int w, int h) {
@@ -88,6 +91,9 @@ public class WorldRenderer {
 
 		renderBackground();
 
+		tiledMapRenderer.setView(camera);
+		tiledMapRenderer.render();
+		
 		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
 		// sprite.draw(batch);

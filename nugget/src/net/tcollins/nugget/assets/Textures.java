@@ -7,6 +7,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.MapLayers;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
 /**
  * @author tcollins
@@ -26,7 +29,7 @@ public class Textures {
 	// private Animation nuggetWalkRightAnimation;
 
 	/** TiledMaps **/
-	// private TiledMap tiledMap;
+	private TiledMap tiledMap;
 
 	public Textures() {
 		load();
@@ -41,12 +44,8 @@ public class Textures {
 		// nuggetWalkRightAnimation = buildNuggetWalkAnimation(atlas, false);
 		nuggetWalkLeftAnimation = buildNuggetWalkAnimation(atlas, true);
 
-		
 		// load the map, set the unit scale to 1/16 (1 unit == 16 pixels)
-		// tiledMap = new
-		// TmxMapLoader().load("data/maps/tiled/super-koalio/level1.tmx");
-
-		// renderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
+		tiledMap = new TmxMapLoader().load("levels/level-01.tmx");
 
 	}
 
@@ -77,5 +76,9 @@ public class Textures {
 	// public Animation getNuggetWalkRightAnimation() {
 	// return nuggetWalkRightAnimation;
 	// }
+
+	public TiledMap getTiledMap() {
+		return tiledMap;
+	}
 
 }
