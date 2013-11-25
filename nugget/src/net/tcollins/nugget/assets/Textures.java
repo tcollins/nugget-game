@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
 
 /**
  * @author tcollins
@@ -14,29 +15,38 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  */
 public class Textures {
 
-	private static final float RUNNING_FRAME_DURATION = 0.06f;
+	private static final float RUNNING_FRAME_DURATION = 0.16f;
 
 	/** Textures **/
 	private TextureRegion nuggetIdleLeft;
-	private TextureRegion nuggetIdleRight;
+	// private TextureRegion nuggetIdleRight;
 
 	/** Animations **/
 	private Animation nuggetWalkLeftAnimation;
-	private Animation nuggetWalkRightAnimation;
+	// private Animation nuggetWalkRightAnimation;
+
+	/** TiledMaps **/
+	private TiledMap tiledMap;
 
 	public Textures() {
 		load();
 	}
 
 	private void load() {
-		TextureAtlas atlas = new TextureAtlas(
-				Gdx.files.internal("images/textures/textures.pack"));
-		nuggetIdleRight = atlas.findRegion("nugget-dude01");
-		nuggetIdleLeft = new TextureRegion(nuggetIdleRight);
-		//nuggetIdleLeft.flip(true, false);
+		TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("images/textures/textures.pack"));
+		nuggetIdleLeft = atlas.findRegion("nugget-dude01");
+		// nuggetIdleRight = new TextureRegion(nuggetIdleLeft);
+		// nuggetIdleLeft.flip(true, false);
 
-		nuggetWalkRightAnimation = buildNuggetWalkAnimation(atlas, false);
+		// nuggetWalkRightAnimation = buildNuggetWalkAnimation(atlas, false);
 		nuggetWalkLeftAnimation = buildNuggetWalkAnimation(atlas, true);
+
+		// load the map, set the unit scale to 1/16 (1 unit == 16 pixels)
+		// tiledMap = new
+		// TmxMapLoader().load("data/maps/tiled/super-koalio/level1.tmx");
+
+		// renderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
+
 	}
 
 	private Animation buildNuggetWalkAnimation(TextureAtlas atlas, boolean flip) {
@@ -55,16 +65,16 @@ public class Textures {
 		return nuggetIdleLeft;
 	}
 
-	public TextureRegion getNuggetIdleRight() {
-		return nuggetIdleRight;
-	}
+	// public TextureRegion getNuggetIdleRight() {
+	// return nuggetIdleRight;
+	// }
 
 	public Animation getNuggetWalkLeftAnimation() {
 		return nuggetWalkLeftAnimation;
 	}
 
-	public Animation getNuggetWalkRightAnimation() {
-		return nuggetWalkRightAnimation;
-	}
+	// public Animation getNuggetWalkRightAnimation() {
+	// return nuggetWalkRightAnimation;
+	// }
 
 }

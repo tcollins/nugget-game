@@ -15,14 +15,15 @@ public class Nugget extends GameObject {
 		IDLE, WALKING, JUMPING, DYING
 	}
 
-	public static final float SIZE = 1.5f;
+	public static final float WIDTH = 1.5f;
+	public static final float HEIGHT = 1.5f;
 
 	State state = State.IDLE;
 	boolean facingLeft = true;
 	float stateTime = 0;
 
 	public Nugget(Vector2 position) {
-		super(position, SIZE, SIZE);
+		super(position, HEIGHT, WIDTH);
 	}
 
 	public State getState() {

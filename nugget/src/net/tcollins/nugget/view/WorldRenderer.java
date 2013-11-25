@@ -27,6 +27,7 @@ public class WorldRenderer {
 	private static final float CAMERA_HEIGHT = 7f;
 
 	private World world;
+	private TextureRegion nuggetFrame;
 
 	private OrthographicCamera camera;
 	private SpriteBatch spriteBatch;
@@ -102,7 +103,7 @@ public class WorldRenderer {
 			if (i % 2 == 0) {
 				shaperRenderer.setColor(new Color(1, 0, 0, 1));
 			} else {
-				shaperRenderer.setColor(new Color(1, 1, 0, 1));
+				shaperRenderer.setColor(new Color(1, 0, 1, 1));
 			}
 			shaperRenderer.filledRect(i - 14 + 2, -3.0f, 0.98f, 2);
 		}
@@ -128,17 +129,24 @@ public class WorldRenderer {
 
 		Nugget nug = world.getNugget();
 
-		TextureRegion nuggetFrame = textures.getNuggetIdleLeft();
-		TextureRegion nuggetFrame2 = textures.getNuggetIdleRight();
+		switch (nug.getState()) {
+		case IDLE:
+			nuggetFrame = textures.getNuggetIdleLeft();
+			break;
+		case WALKING:
+			nuggetFrame = textures.getNuggetWalkLeftAnimation().getKeyFrame(nug.getStateTime(), true);
+			break;
+		case JUMPING:
+			nuggetFrame = textures.getNuggetIdleLeft();
+			break;
+		}
 
-		// System.out.println(nug.getPosition());
+		if (nug.isFacingLeft()) {
+			spriteBatch.draw(nuggetFrame, nug.getPosition().x, -1.0f, Nugget.WIDTH, Nugget.HEIGHT);
 
-		spriteBatch.draw(nuggetFrame, nug.getPosition().x, -1.0f, Nugget.SIZE,
-				Nugget.SIZE);
-
-		// spriteBatch.draw(nuggetFrame, -4f, 2f, Nugget.SIZE, Nugget.SIZE);
-		// spriteBatch.draw(nuggetFrame2, -1.8f, -1.2f, Nugget.SIZE,
-		// Nugget.SIZE);
+		} else {
+			spriteBatch.draw(nuggetFrame, nug.getPosition().x + Nugget.WIDTH, -1.0f, -Nugget.WIDTH, Nugget.HEIGHT);
+		}
 
 	}
 
