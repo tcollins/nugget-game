@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-
 /**
  * @author tcollins
  * 
@@ -23,10 +22,11 @@ public class Textures {
 
 	/** Animations **/
 	private Animation nuggetWalkLeftAnimation;
+
 	// private Animation nuggetWalkRightAnimation;
 
 	/** TiledMaps **/
-	//private TiledMap tiledMap;
+	// private TiledMap tiledMap;
 
 	public Textures() {
 		load();
