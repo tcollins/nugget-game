@@ -24,8 +24,8 @@ import com.badlogic.gdx.math.Vector3;
  */
 public class WorldRenderer {
 
-	private static final float CAMERA_WIDTH = 10f;
-	private static final float CAMERA_HEIGHT = 7f;
+	private static final float CAMERA_WIDTH = 15f; //10f;
+	private static final float CAMERA_HEIGHT = 10f; //7f;
 
 	private World world;
 	private TextureRegion nuggetFrame;
@@ -51,14 +51,14 @@ public class WorldRenderer {
 
 		// camera = new OrthographicCamera(1, h / w);
 		camera = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
-		camera.position.set(world.getNugget().getPosition().x, 1.0f, 0);
+		camera.position.set(world.getNugget().getPosition().x, 6.0f, 0);
 		camera.update();
 
-		spriteBatch = new SpriteBatch();
+		//spriteBatch = new SpriteBatch();
 
 		textures = new Textures();
 		
-		tiledMapRenderer = new OrthogonalTiledMapRenderer(textures.getTiledMap(), 1 / 64f);
+		tiledMapRenderer = new OrthogonalTiledMapRenderer(textures.getTiledMap(), 1 / 70f);
 	}
 
 	public void setSize(int w, int h) {
@@ -78,8 +78,12 @@ public class WorldRenderer {
 		// if (debug)
 		// drawDebug();
 
-		Gdx.gl.glClearColor(1, 1, 1, 1);
+		//Gdx.gl.glClearColor(1, 1, 1, 1);
+		//Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		
+		Gdx.gl.glClearColor(0.7f, 0.7f, 1.0f, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		
 
 		// camera.position.set(world.getNugget().getPosition().x, 1.0f, 0);
 
@@ -94,11 +98,19 @@ public class WorldRenderer {
 		tiledMapRenderer.setView(camera);
 		tiledMapRenderer.render();
 		
-		spriteBatch.setProjectionMatrix(camera.combined);
+		//spriteBatch.setProjectionMatrix(camera.combined);
+		
+		spriteBatch = tiledMapRenderer.getSpriteBatch();		
 		spriteBatch.begin();
 		// sprite.draw(batch);
 		renderNugget();
 		spriteBatch.end();
+		
+//		spriteBatch.setProjectionMatrix(camera.combined);
+//		spriteBatch.begin();
+//		// sprite.draw(batch);
+//		renderNugget();
+//		spriteBatch.end();
 
 	}
 
@@ -115,6 +127,7 @@ public class WorldRenderer {
 		// }
 		// shaperRenderer.end();
 
+		/*
 		shaperRenderer.setProjectionMatrix(camera.combined);
 		shaperRenderer.begin(ShapeType.Filled);
 
@@ -127,6 +140,7 @@ public class WorldRenderer {
 			shaperRenderer.rect(i - 14 + 2, -3.0f, 0.98f, 2);
 		}
 		shaperRenderer.end();
+		*/
 	}
 
 	public void renderNugget() {
@@ -161,10 +175,10 @@ public class WorldRenderer {
 		}
 
 		if (nug.isFacingLeft()) {
-			spriteBatch.draw(nuggetFrame, nug.getPosition().x, -1.0f, Nugget.WIDTH, Nugget.HEIGHT);
+			spriteBatch.draw(nuggetFrame, nug.getPosition().x, 4.0f, Nugget.WIDTH, Nugget.HEIGHT);
 
 		} else {
-			spriteBatch.draw(nuggetFrame, nug.getPosition().x + Nugget.WIDTH, -1.0f, -Nugget.WIDTH, Nugget.HEIGHT);
+			spriteBatch.draw(nuggetFrame, nug.getPosition().x + Nugget.WIDTH, 4.0f, -Nugget.WIDTH, Nugget.HEIGHT);
 		}
 
 	}

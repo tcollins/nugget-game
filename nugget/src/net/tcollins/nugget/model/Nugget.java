@@ -15,8 +15,8 @@ public class Nugget extends GameObject {
 		IDLE, WALKING, JUMPING, DYING
 	}
 
-	public static final float WIDTH = 1.5f;
-	public static final float HEIGHT = 1.5f;
+	public static final float WIDTH = 1.0f;
+	public static final float HEIGHT = 1.0f;
 
 	State state = State.IDLE;
 	boolean facingLeft = true;

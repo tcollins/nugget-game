@@ -12,15 +12,16 @@ import net.tcollins.nugget.model.World;
  */
 public class NuggetController {
 
-	private static final float ACCELERATION = 1.5f;
+	private static final float ACCELERATION = 1.2f;
 	private static final float GRAVITY = -20f;
-	private static final float DAMP = 0.86f;
-	private static final float MAX_VEL = 4f;
+	private static final float DAMP = 0.81f;
+	private static final float MAX_VEL = 0.12f;
 
 	private World world;
 	private Nugget nug;
 
 	// keys
+	boolean keySpace = false;
 	boolean keyLeft = false;
 	boolean keyRight = false;
 
@@ -59,6 +60,10 @@ public class NuggetController {
 			nug.getVelocity().x = -MAX_VEL;
 		}
 
+		
+		System.out.println(nug.getVelocity().x);
+		
+		
 		// simply updates the state time
 		nug.updateStateTime(delta);
 
@@ -90,6 +95,11 @@ public class NuggetController {
 		// }
 		// }
 
+		if(keySpace){
+			// todo  handle jumping
+			System.out.println("TODO... handle jump");
+		}
+		
 		if (!nug.getState().equals(Nugget.State.JUMPING)) {
 			if (keyLeft) {
 				nug.setFacingLeft(true);
@@ -123,4 +133,14 @@ public class NuggetController {
 	public void rightUp() {
 		keyRight = false;
 	}
+	
+	public void spaceDown() {
+		keySpace = true;
+	}
+	
+	public void spaceUp() {
+		keySpace = false;
+	}
+	
+	
 }

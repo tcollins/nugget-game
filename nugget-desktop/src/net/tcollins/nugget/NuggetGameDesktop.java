@@ -8,8 +8,8 @@ public class NuggetGameDesktop {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "nugget";
 		cfg.useGL20 = false;
-		cfg.width = 480;
-		cfg.height = 320;
+		cfg.width = 960;
+		cfg.height = 640;
 		
 		new LwjglApplication(new NuggetGame(), cfg);
 	}

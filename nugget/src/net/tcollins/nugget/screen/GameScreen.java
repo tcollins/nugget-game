@@ -80,6 +80,9 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
+		if (keycode == Keys.SPACE) {
+			nuggetController.spaceDown();
+		}
 		if (keycode == Keys.LEFT) {
 			nuggetController.leftDown();
 		}
@@ -91,6 +94,9 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public boolean keyUp(int keycode) {
+		if (keycode == Keys.SPACE) {
+			nuggetController.spaceUp();
+		}
 		if (keycode == Keys.LEFT) {
 			nuggetController.leftUp();
 		}
